@@ -43,3 +43,12 @@ export function getParam(param) {
   const product = urlParams.get('product')
   return product
 }
+
+// function to take a list of objects and a template and insert the objects as HTML into the DOM
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(templateFn);
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
