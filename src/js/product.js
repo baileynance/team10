@@ -1,5 +1,6 @@
-import { setLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getParams } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductDetails from "./productdetails.mjs";
 
 const dataSource = new ProductData("tents");
 
@@ -16,3 +17,9 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+const productId = getParams('product');
+console.log(dataSource.findProductById(productId));
+
+const product = new ProductDetails(productId, dataSource);
+product.init();
