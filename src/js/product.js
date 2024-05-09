@@ -1,7 +1,8 @@
 import ProductData from './ProductData.mjs';
 import ProductDetails from './ProductDetails.mjs';
-import { setLocalStorage, getParam } from './utils.mjs';
+import { setLocalStorage, getParam, loadHeaderFooter } from './utils.mjs';
 
+loadHeaderFooter();
 const productId = getParam('product');
 const dataSource = new ProductData('tents');
 
