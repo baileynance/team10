@@ -4,14 +4,14 @@ import { loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
-let category = 'tents';
-let listElement = document.querySelector('.product-list');
+// let category = 'tents';
+// let listElement = document.querySelector('.product-list');
 
-const dataSource = new ProductData('tents');
+// const dataSource = new ProductData('tents');
 
-const productListing = new ProductListing(category, dataSource, listElement);
+// const productListing = new ProductListing(category, dataSource, listElement);
 
-productListing.init();
+// productListing.init();
 
 
 
