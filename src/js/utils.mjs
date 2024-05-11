@@ -43,3 +43,10 @@ export function getParam(param) {
   const product = urlParams.get('product')
   return product
 }
+
+export function renderWithTemplate(template, parent, data, callback) {
+  parentElement.insertAdjacentHTML("afterbegin", template);
+  if(callback) {
+    callback(data);
+  }
+}
