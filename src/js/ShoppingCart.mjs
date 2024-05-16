@@ -3,10 +3,10 @@ import { getLocalStorage } from "./utils.mjs";
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
+     <picture>
+      <source media="(max-width: 120px)" srcset="${product.Images.PrimarySmall}">
+      <img src="${product.Images.PrimaryMedium}" alt="${product.NameWithoutBrand}">
+     </picture>
   </a>
   <a href="#">
     <h2 class="card__name">${item.Name}</h2>
