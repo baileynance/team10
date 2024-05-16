@@ -6,6 +6,7 @@ function productDetailsTemplate(product) {
       <img
         class="divider"
         src="${product.Image}"
+        src="${product.Images.PrimaryLarge}"
         alt="${product.NameWithoutBrand}"
       />
       <p class="product-card__price">$${product.FinalPrice}</p>
