@@ -29,7 +29,32 @@ export default class ShoppingCart {
     if(cartItems)
         {
             const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-            document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
+            let parentSelector = document.querySelector(this.parentSelector);
+            parentSelector.innerHTML = htmlItems.join("");
+            let total = this.totalItems(cartItems);
+            let divTotal = document.createElement('div');
+            divTotal.classList.add('cart-footer');
+            // divTotal.classList.add('hide');
+            let pTotal = document.createElement('p');
+            pTotal.classList.add('cart-total');
+            pTotal.textContent = `Total: $${total}`;
+            divTotal.appendChild(pTotal);
+            let buttonShopping = document.createElement('a');
+            buttonShopping.classList.add('btn-shopping');
+            buttonShopping.innerHTML = 'Pay';
+            buttonShopping.href = '../checkout/';
+            divTotal.appendChild(buttonShopping);
+            parentSelector.appendChild(divTotal);
         }
   }
+  totalItems(cartItems){
+      let totalTemp = 0;
+      cartItems.forEach((item) => {
+
+      totalTemp += item.FinalPrice;
+    }
+   );
+     return Math.round(totalTemp*100)/100;
+  }
+  
 }
