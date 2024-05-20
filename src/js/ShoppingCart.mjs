@@ -14,6 +14,8 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <button class="quantityRemove">-</button>
+  <button class="quantityAdd">+</button>
 </li>`;
 
   return newItem;
@@ -56,5 +58,21 @@ export default class ShoppingCart {
    );
      return Math.round(totalTemp*100)/100;
   }
-  
+  addQuantity(){
+    const item = document.getElementsByClassName("card__name").textContent;
+    const cartItems = getLocalStorage(this.key);
+    cartItems.append(item);
+    setLocalStorage(this.key, cartItems);
+    const li = document.querySelectorAll(li);
+    li.remove();
+    this.renderCartContents();
+  }
+  removeQuanity(){
+    const item = document.getElementsByClassName("card__name").textContent;
+    const cartItems = getLocalStorage(this.key);
+    const index = cartItems.indexOf(item);
+    cartItems.splice(index, 1);
+    setLocalStorage(this.key, cartItems);
+    this.renderCartContents();
+  }
 }
